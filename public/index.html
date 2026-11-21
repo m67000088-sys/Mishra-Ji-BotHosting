@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mishra Ji Bot Hosting</title>
+<meta name="theme-color" content="#0a0f1d">
+<style>
+:root{--ac:#4f8cff;--bg:#0a0f1d;--s1:#111832;--s2:#18213f;--bd:#26315a;--tx:#e8ecf7;--mu:#8d97b5;--ok:#2fbf71;--er:#f2545b;--wa:#f5a623}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;line-height:1.5;
+  background-image:radial-gradient(900px 420px at 85% -10%,color-mix(in srgb,var(--ac) 22%,transparent),transparent)}
+a{color:var(--ac)}
+#sd{position:fixed;top:0;bottom:0;left:0;width:240px;background:var(--s1);border-right:1px solid var(--bd);display:flex;flex-direction:column;padding:16px 12px;gap:4px;z-index:40;overflow:auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;padding:4px 8px 16px}
+.logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--ac),color-mix(in srgb,var(--ac) 45%,#000));display:grid;place-items:center;font-size:20px;flex:none}
+#sd nav{display:flex;flex-direction:column;gap:3px}
+#sd nav button{background:none;color:var(--mu);text-align:left;display:flex;gap:10px;align-items:center;font-weight:600;padding:11px 12px;border-radius:11px;width:100%;border:0;font-family:inherit;font-size:14px;cursor:pointer}
+#sd nav button.on{background:var(--ac);color:#fff}
+#sd nav button:hover:not(.on){background:var(--s2);color:var(--tx)}
+#sd .sp{flex:1}
+.me{display:flex;align-items:center;gap:10px;padding:10px;background:var(--bg);border:1px solid var(--bd);border-radius:12px;margin-bottom:6px}
+.me i{width:32px;height:32px;border-radius:50%;background:var(--ac);display:grid;place-items:center;font-style:normal;font-weight:800;flex:none}
+.me span{font-size:12px;color:var(--mu);display:block}
+#tb{display:none}#ov{display:none}
+#ann{background:var(--wa);color:#2a1800;text-align:center;font-size:14px;padding:9px 14px;display:none;font-weight:600}
+#main{margin-left:240px;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto;padding:22px}
+.page{display:none}.page.on{display:block}
+h2.pt{font-size:24px;letter-spacing:-.4px;margin-bottom:16px}
+.hero{padding:26px 0 18px;text-align:center}
+.hero h1{font-size:clamp(26px,5vw,40px);line-height:1.15;letter-spacing:-1px;margin-bottom:10px}
+.hero p{color:var(--mu);max-width:520px;margin:0 auto}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:0 0 18px}
+.feat div{background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:14px;font-size:13.5px;color:var(--mu)}
+.feat b{display:block;color:var(--tx);font-size:14.5px;margin-bottom:3px}
+.card{background:linear-gradient(180deg,var(--s1),color-mix(in srgb,var(--s1) 85%,#000));border:1px solid var(--bd);border-radius:18px;padding:20px;margin-bottom:16px}
+h3{font-size:16px;margin-bottom:12px}
+input,textarea,select{width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:11px;padding:12px 13px;font-size:15px;margin-bottom:10px;outline:none;font-family:inherit}
+textarea{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;resize:vertical}
+input:focus,textarea:focus{border-color:var(--ac)}
+button{font-family:inherit;background:var(--ac);color:#fff;border:0;border-radius:11px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer}
+button:hover{filter:brightness(1.1)}button:disabled{opacity:.5;cursor:default}
+button.g{background:var(--s2);border:1px solid var(--bd);color:var(--tx)}
+button.r{background:color-mix(in srgb,var(--er) 18%,transparent);color:#ff8b90;border:1px solid color-mix(in srgb,var(--er) 40%,transparent)}
+button.sm{padding:7px 12px;font-size:13px;border-radius:9px}.full{width:100%}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--bg);padding:5px;border-radius:13px;margin-bottom:16px;border:1px solid var(--bd)}
+.tabs button{background:none;color:var(--mu)}.tabs button.on{background:var(--ac);color:#fff}
+.drop{border:2px dashed var(--bd);border-radius:16px;padding:26px 14px;text-align:center;cursor:pointer;margin-bottom:12px;background:var(--bg)}
+.drop:hover,.drop.dz{border-color:var(--ac)}
+.drop small{color:var(--mu);display:block;margin-top:4px}
+.bar{height:8px;background:var(--bg);border-radius:9px;overflow:hidden;margin:4px 0 12px;display:none}.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .15s}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.bot{padding:14px 0;border-top:1px solid var(--bd)}.bot:first-of-type{border-top:0}
+.bot .n{font-weight:700;font-size:16px}.bot .m{font-size:12.5px;color:var(--mu);margin-top:3px}
+.pill{display:inline-block;font-size:11px;padding:2px 9px;border-radius:99px;font-weight:700;vertical-align:middle}
+.pill.ok{background:color-mix(in srgb,var(--ok) 18%,transparent);color:#6ee7a4}
+.pill.off{background:color-mix(in srgb,var(--mu) 25%,transparent);color:var(--mu)}
+.pill.bad{background:color-mix(in srgb,var(--er) 18%,transparent);color:#ff9aa0}
+.pill.wa{background:color-mix(in srgb,var(--wa) 18%,transparent);color:#ffd48a}
+.pill.in{background:color-mix(in srgb,var(--ac) 20%,transparent);color:#9fc0ff}
+.pill.rt{background:var(--s2);color:var(--tx);border:1px solid var(--bd)}
+.spin{display:inline-block;width:10px;height:10px;border:2px solid #9fc0ff55;border-top-color:#9fc0ff;border-radius:50%;animation:sp 0.8s linear infinite;margin-right:5px;vertical-align:-1px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.warn{background:color-mix(in srgb,var(--wa) 14%,transparent);border:1px solid color-mix(in srgb,var(--wa) 45%,transparent);color:#ffd48a;border-radius:14px;padding:14px;margin-bottom:16px}
+.setup{border-color:var(--er)}
+details{background:var(--bg);border:1px solid var(--bd);border-radius:12px;padding:10px 14px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:600;font-size:14px}
+pre.code{background:#050810;border:1px solid var(--bd);border-radius:10px;padding:10px;font-size:12.5px;overflow:auto;margin:8px 0 2px;white-space:pre}
+code{background:var(--bg);border:1px solid var(--bd);padding:1px 6px;border-radius:6px;font-size:12.5px}
+footer{padding:20px 22px 34px;text-align:center;color:var(--mu);font-size:13px}
+footer a{margin:0 8px;text-decoration:none}
+dialog{background:var(--s1);color:var(--tx);border:1px solid var(--bd);border-radius:18px;padding:20px;width:min(640px,95vw);max-height:90vh;overflow:auto}
+dialog::backdrop{background:#000b}
+pre.logbox{background:#050810;border:1px solid var(--bd);border-radius:10px;padding:10px;font-size:12px;height:45vh;overflow:auto;white-space:pre-wrap;word-break:break-all;margin:10px 0}
+.kv{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;background:var(--bg);border:1px solid var(--bd);border-radius:10px;margin-bottom:6px;font-size:13.5px}
+.kv code{border:0;background:none;font-size:13.5px;padding:0}.kv .v{color:var(--mu);font-family:ui-monospace,monospace;font-size:12.5px}
+.two{display:grid;grid-template-columns:1fr 1.4fr;gap:8px}
+#t{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(20px);padding:11px 18px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:9999;max-width:92vw;box-shadow:0 8px 30px #0008}
+#t.show{opacity:1;transform:translateX(-50%)}
+.hide{display:none!important}.mut{color:var(--mu);font-size:13px}
+@media(max-width:820px){
+ #tb{display:flex;position:sticky;top:0;z-index:20;background:var(--s1);border-bottom:1px solid var(--bd);padding:10px 14px;align-items:center;gap:12px;font-weight:800}
+ #sd{transform:translateX(-102%);transition:transform .22s;box-shadow:12px 0 40px #000a}
+ body.nav #sd{transform:none}body.nav #ov{display:block;position:fixed;inset:0;background:#0009;z-index:30}
+ #main{margin-left:0}.wrap{padding:16px 14px 6px}.two{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="tb"><button class="g" id="mb">☰</button><span id="nm2"></span></div>
+<div id="ov"></div>
+<aside id="sd">
+  <div class="brand"><div class="logo" id="logo">🤖</div><span id="nm">Mishra Ji Bot Hosting</span></div>
+  <nav>
+    <button data-p="home" class="on">🏠 Home</button>
+    <button data-p="up" class="hide" id="nup">📤 Naya Bot</button>
+    <button data-p="bots" class="hide" id="nbots">🤖 Mere Bots</button>
+  </nav>
+  <div class="sp"></div>
+  <div class="me hide" id="who"><i id="av"></i><div><b id="me"></b><span>Logged in</span></div></div>
+  <nav><button id="outb" class="hide">🚪 Logout</button><button id="inb" class="hide">🔑 Login / Signup</button></nav>
+</aside>
+<div id="main">
+  <div id="ann"></div>
+  <div class="wrap">
+    <div id="setup" class="card setup hide"></div>
+    <div id="maint" class="warn hide"></div>
+
+    <section class="page on" id="p-home">
+      <div class="hero"><h1 id="h1">🤖 Apna Bot Host Karo</h1><p id="hp">ZIP upload karo, env variables daalo, Start dabao. Python aur Node.js dono chalte hain, 24/7 auto-restart ke saath.</p></div>
+      <div class="feat">
+        <div><b>📦 ZIP Upload</b>bot.py + requirements.txt (ya index.js + package.json). Libraries khud install hoti hain.</div>
+        <div><b>🔐 Env Variables</b>BOT_TOKEN jaisi secrets alag se, encrypted store hoti hain. Code mein token nahi.</div>
+        <div><b>♻️ Auto-restart</b>Crash hone par bot khud wapas chalu, live logs aur CPU/RAM dikhta hai.</div>
+        <div><b>✈️ Telegram Ready</b>Token test button, aur ek token do bots mein chalne se pehle warning.</div>
+      </div>
+      <div id="authsec" class="card" style="max-width:440px;margin:0 auto 18px">
+        <div class="tabs"><button id="tl" class="on">Login</button><button id="ts">Signup</button></div>
+        <input id="u" placeholder="Username" autocomplete="username" autocapitalize="none">
+        <input id="p" type="password" placeholder="Password (min 8)" autocomplete="current-password">
+        <button class="full" id="go">Login</button>
+        <p class="mut" id="sunote" style="margin-top:10px;text-align:center"></p>
+      </div>
+      <div id="welcome" class="card hide"><h3 id="wt"></h3><p class="mut">Left menu se <b>Naya Bot</b> kholo aur apna ZIP upload karo.</p>
+        <div class="row" style="justify-content:flex-start;margin-top:12px"><button data-go="up">📤 Naya Bot</button><button class="g" data-go="bots">🤖 Mere Bots</button></div></div>
+    </section>
+
+    <section class="page" id="p-up">
+      <h2 class="pt">📤 Naya Bot Upload Karo</h2>
+      <div class="card">
+        <details open>
+          <summary>ZIP ke andar kya hona chahiye?</summary>
+          <p class="mut" style="margin-top:8px">Dono me se ek tarah ka ZIP banao (files seedha top-level par, ya ek folder ke andar):</p>
+          <pre class="code">🐍 Python                 🟢 Node.js
+bot.py                    index.js
+requirements.txt          package.json</pre>
+          <p class="mut" style="margin-top:8px"><b>Token code mein mat likho.</b> Upload ke baad <b>⚙️ Env</b> mein <code>BOT_TOKEN</code> add karo aur code mein padho:</p>
+          <pre class="code">Python:  TOKEN = os.environ["BOT_TOKEN"]
+Node:    const TOKEN = process.env.BOT_TOKEN</pre>
+          <p class="mut" style="margin-top:8px"><code>requirements.txt</code> mein sirf PyPI packages (jaise <code>python-telegram-bot==21.6</code>) allowed hain. Single <code>.py</code> / <code>.js</code> file bhi upload ho jati hai.</p>
+        </details>
+        <div class="drop" id="drop"><div style="font-size:30px">📦</div><b id="dt">ZIP yahan chuno ya drop karo</b><small id="dsub"></small></div>
+        <input type="file" id="file" accept=".zip,.py,.js,.mjs" class="hide">
+        <input id="bn" placeholder="bot-naam (a-z, 0-9, -)" autocapitalize="none">
+        <div class="bar" id="bar"><i></i></div>
+        <button class="full" id="up">🚀 Upload</button>
+      </div>
+    </section>
+
+    <section class="page" id="p-bots">
+      <div class="row"><h2 class="pt">🤖 Mere Bots</h2><span class="mut" id="lim"></span></div>
+      <div class="card"><div id="bots"></div></div>
+    </section>
+  </div>
+  <footer><div id="fl"></div><div id="ft"></div></footer>
+</div>
+<input type="file" id="updfile" accept=".zip,.py,.js,.mjs" class="hide">
+<dialog id="dlg"></dialog>
+<div id="t"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let C={},mode='login',user=null,file=null,PG='home',BOTS=[],updName=null,logTimer=null;
+function toast(m,ok=true){const t=$('t');t.textContent=m;t.style.background=ok?'#1f8f55':'#c53a41';t.classList.add('show');clearTimeout(toast.i);toast.i=setTimeout(()=>t.classList.remove('show'),3800)}
+async function api(url,method='GET',b,raw){const r=await fetch(url,{method,headers:b&&!raw?{'Content-Type':'application/json'}:{},body:raw?b:(b?JSON.stringify(b):undefined)});const j=await r.json().catch(()=>({}));if(!r.ok){const e=new Error(j.error||'Error');e.data=j;throw e}return j}
+function xhrPost(url,buf,prog){return new Promise((res,rej)=>{const x=new XMLHttpRequest();x.open('POST',url);x.upload.onprogress=e=>e.lengthComputable&&prog&&prog(e.loaded/e.total);
+  x.onload=()=>{let j={};try{j=JSON.parse(x.responseText)}catch(e){}x.status>=200&&x.status<300?res(j):rej(new Error(j.error||'Upload fail ('+x.status+')'))};x.onerror=()=>rej(new Error('Network error'));x.send(buf)})}
+const fmtUp=s=>{if(s==null)return'';const d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);return d?d+'d '+h+'h':h?h+'h '+m+'m':m?m+'m':s+'s'};
+
+function show(p){PG=p;document.body.classList.remove('nav');document.querySelectorAll('.page').forEach(x=>x.classList.toggle('on',x.id==='p-'+p));document.querySelectorAll('#sd nav button[data-p]').forEach(b=>b.classList.toggle('on',b.dataset.p===p));if(p==='bots')listBots();window.scrollTo(0,0)}
+document.querySelectorAll('#sd nav button[data-p]').forEach(b=>b.onclick=()=>show(b.dataset.p));
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>show(b.dataset.go));
+$('mb').onclick=()=>document.body.classList.toggle('nav');$('ov').onclick=()=>document.body.classList.remove('nav');
+$('inb').onclick=()=>show('home');
+
+async function loadCfg(){
+  try{C=await api('/api/config')}catch(e){C={name:'Mishra Ji Bot Hosting',logo:'🤖',signupOpen:true,maxFileKB:2048,maxBotsPerUser:3}}
+  if(C.env&&!C.env.redis){$('setup').classList.remove('hide');$('setup').innerHTML='<h3>⚙️ Setup baaki hai</h3><p class="mut">Render env me <b>UPSTASH_REDIS_REST_URL</b> aur <b>UPSTASH_REDIS_REST_TOKEN</b> daalo.</p>'}
+  document.title=C.name||'Mishra Ji Bot Hosting';$('nm').textContent=C.name||'Mishra Ji Bot Hosting';$('nm2').textContent=C.name||'Mishra Ji Bot Hosting';
+  $('logo').textContent=C.logo||'🤖';$('h1').textContent=(C.logo||'🤖')+' '+(C.tagline||'Apna Bot Host Karo');
+  $('ft').textContent='© '+new Date().getFullYear()+' '+(C.name||'Mishra Ji Bot Hosting');
+  $('fl').innerHTML=(C.links||[]).map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.title)}</a>`).join('');
+  $('maint').classList.toggle('hide',!C.maintenance);$('maint').textContent='🛠 '+(C.maintenanceMsg||'');
+  $('ann').style.display=C.announcement?'block':'none';$('ann').textContent=C.announcement||'';
+  $('dsub').textContent='Max '+Math.round((C.maxFileKB||2048)/1024*10)/10+'MB • .zip (ya single .py / .js)'+(C.nodeSupported===false?' • ⚠️ Node.js is server par nahi hai':'');
+  $('sunote').textContent=C.signupOpen===false?'🔒 Naye signup abhi band hain':'';
+  $('ts').classList.toggle('hide',C.signupOpen===false);
+}
+function ui(){$('go').textContent=mode==='login'?'Login':'Account banao';$('tl').classList.toggle('on',mode==='login');$('ts').classList.toggle('on',mode==='signup')}
+$('tl').onclick=()=>{mode='login';ui()};$('ts').onclick=()=>{mode='signup';ui()};
+$('go').onclick=async()=>{$('go').disabled=true;try{await api('/api/auth','POST',{action:mode,username:$('u').value,password:$('p').value});$('p').value='';await init(true)}catch(e){toast(e.message,false)}$('go').disabled=false};
+$('p').onkeydown=e=>{if(e.key==='Enter')$('go').click()};
+$('outb').onclick=async()=>{await api('/api/auth','POST',{action:'logout'});await init();show('home')};
+async function init(fresh){
+  ui();const j=await api('/api/auth').catch(()=>({}));user=j.user||null;const maint=!!C.maintenance;
+  $('authsec').classList.toggle('hide',!!user||maint);$('welcome').classList.toggle('hide',!user);
+  $('nup').classList.toggle('hide',!user||maint);$('nbots').classList.toggle('hide',!user);
+  $('who').classList.toggle('hide',!user);$('outb').classList.toggle('hide',!user);$('inb').classList.toggle('hide',!!user||maint);
+  if(user){$('me').textContent='@'+user;$('av').textContent=user[0].toUpperCase();$('wt').textContent='👋 Welcome, '+user+'!';if(fresh)show('up')}
+}
+
+/* ---------------- bots list ---------------- */
+const STATUS_LABEL={running:['ok','🟢 Running'],stopped:['off','⚪ Stopped'],pending_approval:['wa','⏳ Approval pending'],crashed:['bad','❌ Crashed'],killed:['bad','⚠️ Killed (RAM limit)'],installing:['in','<span class="spin"></span>Installing / starting']};
+const RT={python:'🐍 Python',node:'🟢 Node.js'};
+function botCard(b){
+  const st=STATUS_LABEL[b.status]||['off',esc(b.status)];const busy=b.status==='installing';
+  const meta=[b.entry?'▶ '+esc(b.entry):'',b.status==='running'&&b.uptime!=null?'⏱ '+fmtUp(b.uptime):'',b.cpu!==undefined?`CPU ${b.cpu}% • RAM ${b.mem}MB`:'',b.restarts?'🔁 '+b.restarts+' restart':'','🔐 '+(b.envCount||0)+' env'].filter(Boolean).join(' • ');
+  return `<div class="bot" data-name="${esc(b.name)}"><div class="n">${esc(b.name)} <span class="pill rt">${RT[b.runtime]||esc(b.runtime||'')}</span> <span class="pill ${st[0]}">${st[1]}</span></div>
+    <div class="m">${meta}</div>
+    ${b.status==='crashed'&&b.exitCode?`<div class="m" style="color:#ff9aa0">Exit: ${esc(b.exitCode)} — Logs dekho 👇</div>`:''}
+    <div class="acts">
+      ${b.status==='running'?'<button class="g sm" data-stop>⏹ Stop</button><button class="g sm" data-restart>🔄 Restart</button>':b.status==='pending_approval'||busy?'':'<button class="sm" data-start>▶ Start</button>'}
+      <button class="g sm" data-logs>📜 Logs</button>
+      <button class="g sm" data-env>⚙️ Env</button>
+      <button class="g sm" data-upd>⬆️ Update ZIP</button>
+      <button class="r sm" data-del>🗑 Delete</button>
+    </div></div>`;
+}
+async function listBots(silent){
+  try{const j=await api('/api/bots');BOTS=j.bots;$('lim').textContent=j.bots.length+' / '+j.limit+' bots';
+    $('bots').innerHTML=j.bots.map(botCard).join('')||'<p class="mut">Abhi koi bot nahi. Left menu se <b>Naya Bot</b> kholo 👈</p>'}
+  catch(e){if(!silent)toast(e.message,false)}
+}
+setInterval(()=>{if(PG==='bots'&&!document.hidden&&!$('dlg').open)listBots(true)},4000);
+
+$('bots').onclick=async e=>{
+  const row=e.target.closest('.bot');if(!row)return;const name=row.dataset.name;
+  const run=async(fn,msg)=>{try{await fn();msg&&toast(msg);listBots()}catch(er){toast(er.message,false)}};
+  if(e.target.closest('[data-start]'))run(()=>api(`/api/bots/${name}/start`,'POST'),'Start ho raha hai... (pehli baar libraries install hoti hain, 1-2 min lag sakte hain)');
+  if(e.target.closest('[data-stop]'))run(()=>api(`/api/bots/${name}/stop`,'POST'),'Stop ho gaya');
+  if(e.target.closest('[data-restart]'))run(()=>api(`/api/bots/${name}/restart`,'POST'),'Restart ho raha hai...');
+  if(e.target.closest('[data-del]')){if(!confirm(name+' delete karein? Files aur env sab hat jayenge.'))return;run(()=>api(`/api/bots/${name}`,'DELETE'),'Delete ho gaya')}
+  if(e.target.closest('[data-logs]'))openLogs(name);
+  if(e.target.closest('[data-env]'))openEnv(name);
+  if(e.target.closest('[data-upd]')){updName=name;$('updfile').value='';$('updfile').click()}
+};
+
+/* ---------------- logs dialog ---------------- */
+function closeDlg(){const d=$('dlg');clearInterval(logTimer);logTimer=null;if(d.open)d.close()}
+$('dlg').addEventListener('close',()=>{clearInterval(logTimer);logTimer=null});
+function openLogs(name){
+  const d=$('dlg');
+  d.innerHTML=`<div class="row"><h3 style="margin:0">📜 ${esc(name)} — logs</h3><label class="mut" style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="lauto" checked style="width:auto;margin:0"> auto-refresh</label></div>
+  <pre class="logbox" id="lbox">loading…</pre>
+  <div class="row"><div class="acts" style="margin:0"><a href="/api/bots/${encodeURIComponent(name)}/logs/download"><button class="g sm" type="button">⬇ Download</button></a><button class="r sm" id="lclr">🧹 Clear</button></div><button class="g" id="lx">Close</button></div>`;
+  d.showModal();
+  const box=$('lbox');
+  const load=async()=>{try{const j=await api(`/api/bots/${name}/logs`);const nb=box.scrollTop+box.clientHeight>=box.scrollHeight-30;box.textContent=j.log||'(khali hai)';if(nb)box.scrollTop=box.scrollHeight}catch(e){box.textContent='Error: '+e.message}};
+  load().then(()=>box.scrollTop=box.scrollHeight);
+  logTimer=setInterval(()=>{if($('lauto')&&$('lauto').checked)load()},2500);
+  $('lx').onclick=closeDlg;
+  $('lclr').onclick=async()=>{await api(`/api/bots/${name}/logs/clear`,'POST');load()};
+}
+
+/* ---------------- env dialog ---------------- */
+async function openEnv(name){
+  const d=$('dlg');if(!d.open)d.showModal();
+  let j;try{j=await api(`/api/bots/${name}/env`)}catch(e){toast(e.message,false);return closeDlg()}
+  const b=BOTS.find(x=>x.name===name)||{};
+  d.innerHTML=`<div class="row"><h3 style="margin:0">⚙️ ${esc(name)} — Environment Variables</h3><button class="g sm" id="ex">✕</button></div>
+  <p class="mut" style="margin:6px 0 12px">Secrets (jaise <code>BOT_TOKEN</code>) yahan daalo. Encrypted store hote hain, baad mein sirf masked dikhte hain. Max ${j.max} variables.</p>
+  <div id="elist">${j.env.map(v=>`<div class="kv"><span><code>${esc(v.key)}</code> <span class="v">${esc(v.masked)}</span>${v.isToken?' <span class="pill ok">Telegram token</span>':''}</span><span><button class="g sm" data-chk="${esc(v.key)}"${v.isToken?'':' style="display:none"'}>✈️ Test</button> <button class="r sm" data-rm="${esc(v.key)}">✕</button></span></div>`).join('')||'<p class="mut">Abhi koi env variable nahi.</p>'}</div>
+  <div class="two" style="margin-top:12px"><input id="ek" placeholder="NAAM (BOT_TOKEN)" autocapitalize="characters" spellcheck="false"><input id="ev" placeholder="value" autocomplete="off" spellcheck="false"></div>
+  <button class="full" id="eadd">➕ Add / Update</button>
+  <details style="margin-top:12px"><summary>📄 Poora .env paste karo (bulk)</summary><textarea id="ed" rows="5" placeholder="BOT_TOKEN=123456:ABC...\nADMIN_ID=12345\nAPI_KEY=xyz" style="margin-top:8px"></textarea><button class="g sm" id="eimp">Import karo</button></details>
+  ${b.status==='running'?'<div class="warn" style="margin:12px 0 0">⚠️ Bot chal raha hai. Env change ke liye <b>Restart</b> zaroori hai. <button class="sm" id="erst" style="margin-left:6px">🔄 Restart abhi</button></div>':''}`;
+  $('ex').onclick=closeDlg;
+  const post=async(body,msg)=>{try{await api(`/api/bots/${name}/env`,'POST',body);toast(msg||'Save ho gaya ✔');await listBots(true);openEnv(name)}catch(e){toast(e.message,false)}};
+  $('eadd').onclick=()=>{const k=$('ek').value.trim(),v=$('ev').value;if(!k||!v)return toast('Naam aur value dono likho',false);post({set:{[k]:v}})};
+  $('eimp').onclick=()=>{const t=$('ed').value.trim();if(!t)return;post({dotenv:t},'Import ho gaya ✔')};
+  d.querySelectorAll('[data-rm]').forEach(x=>x.onclick=()=>post({delete:[x.dataset.rm]},'Hat gaya'));
+  d.querySelectorAll('[data-chk]').forEach(x=>x.onclick=async()=>{x.disabled=true;try{const r=await api(`/api/bots/${name}/telegram-check`,'POST',{key:x.dataset.chk});toast('✅ Token sahi hai: @'+r.username+(r.warning?' — ⚠️ '+r.warning:''),!r.warning)}catch(e){toast(e.message,false)}x.disabled=false});
+  const er=$('erst');if(er)er.onclick=async()=>{try{await api(`/api/bots/${name}/restart`,'POST');toast('Restart ho raha hai...');closeDlg();listBots()}catch(e){toast(e.message,false)}};
+}
+
+/* ---------------- upload / update ---------------- */
+const okExt=n=>/\.(zip|py|js|mjs)$/i.test(n);
+function pick(f){if(!f)return;if(!okExt(f.name))return toast('Sirf .zip (ya single .py / .js) chuno',false);
+  if(f.size>(C.maxFileKB||2048)*1024)return toast('File '+Math.round((C.maxFileKB||2048)/1024*10)/10+'MB se badi hai',false);
+  file=f;$('dt').textContent='✅ '+f.name+' ('+(f.size/1024).toFixed(0)+' KB)';
+  if(!$('bn').value)$('bn').value=f.name.replace(/\.(zip|py|js|mjs)$/i,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,30)}
+$('drop').onclick=()=>$('file').click();$('file').onchange=e=>pick(e.target.files[0]);
+['dragover','dragenter'].forEach(ev=>$('drop').addEventListener(ev,e=>{e.preventDefault();$('drop').classList.add('dz')}));
+['dragleave','drop'].forEach(ev=>$('drop').addEventListener(ev,e=>{e.preventDefault();$('drop').classList.remove('dz')}));
+$('drop').addEventListener('drop',e=>pick(e.dataTransfer.files[0]));
+async function doUpload(name,f,onprog){const buf=await f.arrayBuffer();return xhrPost(`/api/bots?name=${encodeURIComponent(name)}&filename=${encodeURIComponent(f.name)}`,buf,onprog)}
+$('up').onclick=async()=>{
+  if(!file)return toast('Pehle ZIP file chuno',false);
+  const name=$('bn').value.trim().toLowerCase();if(!name)return toast('Bot ka naam likho',false);
+  const bar=$('bar');bar.style.display='block';$('up').disabled=true;
+  try{
+    await listBots(true);const isNew=!BOTS.some(b=>b.name===name);
+    const j=await doUpload(name,file,p=>bar.firstElementChild.style.width=Math.round(p*100)+'%');
+    toast(j.status==='pending_approval'?'✅ Upload ho gaya, admin approval ka wait hai':`🎉 Upload ho gaya! (${j.runtime==='node'?'Node.js':'Python'} • ${j.entry})`);
+    file=null;$('file').value='';$('dt').textContent='ZIP yahan chuno ya drop karo';$('bn').value='';
+    show('bots');await listBots(true);if(isNew)openEnv(name);
+  }catch(e){toast(e.message,false)}
+  bar.style.display='none';bar.firstElementChild.style.width='0';$('up').disabled=false;
+};
+$('updfile').onchange=async e=>{const f=e.target.files[0];if(!f||!updName)return;if(!okExt(f.name))return toast('Sirf .zip / .py / .js',false);
+  if(f.size>(C.maxFileKB||2048)*1024)return toast('File bahut badi hai',false);
+  try{toast('Update ho raha hai...');await doUpload(updName,f);toast('✅ Update ho gaya. Bot stop hai, Start dabao (env save rehta hai).');listBots()}catch(er){toast(er.message,false)}updName=null};
+
+(async()=>{await loadCfg();await init()})();
+</script>
+</body>
+</html>
